@@ -35,7 +35,7 @@ PATH = os.path.abspath(os.path.dirname(__file__))
 
 def extract_domain(url) -> str:
     if not url or not re.match(
-        "^(https?:\/\/(([a-zA-Z0-9]+-?)+\.)+[a-zA-Z]+)(:\d+)?(\/.*)?(\?.*)?(#.*)?$", url
+        r"^(https?:\/\/(([a-zA-Z0-9]+-?)+\.)+[a-zA-Z]+)(:\d+)?(\/.*)?(\?.*)?(#.*)?$", url
     ):
         return ""
 
@@ -96,7 +96,7 @@ def checkin(url, headers, retry) -> None:
 
 
 def get_cookie(text) -> str:
-    regex = "(__cfduid|uid|email|key|ip|expire_in)=(.+?);"
+    regex = r"(__cfduid|uid|email|key|ip|expire_in)=(.+?);"
     if not text:
         return ""
 
